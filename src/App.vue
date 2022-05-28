@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <p>Создать два счетчика, объявить один через ref, второй через reactive объект с свойством счетчика</p>
+    <p>Сверстать 2 кнопки, значение счетчиков вывести в тексты соответствующих кнопок. При нажатии увеличивать на 1 нужный счетчик</p>
+    <button @click="changeRef">{{count1}}</button>
+    <button @click="changeReactive">{{countObj.count2}}</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import {ref, reactive} from 'vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    const count1 = ref(0);
+    const countObj = reactive({
+      count2: 0
+    })
+
+    function changeRef() {
+      count1.value++
+    }
+
+    function changeReactive() {
+      countObj.count2++
+    }
+
+    return {
+      count1, 
+      countObj: countObj,
+      changeRef,
+      changeReactive
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
