@@ -16,11 +16,11 @@ export default {
       count2: 0
     })
 
-    function changeRef() {
+    const changeRef = () => {
       count1.value++
     }
 
-    function changeReactive() {
+    const changeReactive = () => {
       countObj.count2++
     }
 
